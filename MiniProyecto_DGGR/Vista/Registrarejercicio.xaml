@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MiniProyecto_DGGR.Vista.Registrarejercicio"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry">
+                <Style.Triggers>
+                    <Trigger TargetType="Entry"
+                         Property="IsFocused" Value="True">
+                        <Setter Property="BackgroundColor" Value="#4D983C" />
+                        <Setter Property="PlaceholderColor" Value="Black"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="80,*"
+          BackgroundColor="#1d1d1d">
+        <StackLayout Orientation="Horizontal" Padding="15">
+
+            <!-- Botón de regreso -->
+            <Image Source="https://i.ibb.co/0ncF8Z4/flecha1.png" WidthRequest="30">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Volvercommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+
+            <!-- Título de la página -->
+            <Label Text="EJERCICIO" Margin="80,0,80,0" HorizontalOptions="Center" VerticalOptions="Center" FontSize="18" FontAttributes="Bold" TextColor="#4D983C"/>
+
+            <!-- Imagen adicional -->
+            <Image Source="https://i.ibb.co/tCg9D0S/c.jpg" WidthRequest="30" />
+        </StackLayout>
+
+        <StackLayout Grid.Row="1" Margin="10">
+            <!-- Entrada para Calorías -->
+            <Label Text="Calorías Quemadas: "
+                   TextColor="White" 
+                   FontAttributes="Bold"
+                   VerticalOptions="Center"/>
+            <Entry Text="{Binding Txtcalorias}"
+                   Placeholder="Calorías quemadas"
+                   PlaceholderColor="#757575"
+                   TextColor="White"
+                   BackgroundColor="#212121"
+                   Margin="0,0,0,10"
+                   Keyboard="Numeric"/>
+
+            <!-- Entrada para Kilos -->
+            <Label Text="Kilos Quemados: "
+                   TextColor="White" 
+                   FontAttributes="Bold"
+                   VerticalOptions="Center"/>
+            <Entry Text="{Binding Txtkilos}"
+                   Placeholder="Kilos quemados"
+                   PlaceholderColor="#757575"
+                   TextColor="White"
+                   BackgroundColor="#212121"
+                   Margin="0,0,0,10"
+                   Keyboard="Numeric"/>
+
+            <!-- Entrada para Distancia -->
+            <Label Text="Distancia Recorrida: "
+                   TextColor="White" 
+                   FontAttributes="Bold"
+                   VerticalOptions="Center"/>
+            <Entry Text="{Binding Txtdistancia}"
+                   Placeholder="Distancia en cm"
+                   PlaceholderColor="#757575"
+                   TextColor="White"
+                   BackgroundColor="#212121"
+                   Margin="0,0,0,10"
+                   Keyboard="Numeric"/>
+
+            <!-- Botón para Insertar -->
+            <Button Text="+"
+                    HorizontalOptions="Center"
+                    BackgroundColor="#4D983C"
+                    BorderColor="Black"
+                    BorderWidth="3"
+                    CornerRadius="15"
+                    FontSize="25"
+                    WidthRequest="60"
+                    HeightRequest="100"
+                    TranslationX="150"
+                    TranslationY="300"
+                    Command="{Binding Insertarcommand}"/>
+            
+        </StackLayout>
+    </Grid>
+</ContentPage>

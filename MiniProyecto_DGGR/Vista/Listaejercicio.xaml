@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MiniProyecto_DGGR.Vista.Listaejercicio"
+             NavigationPage.HasNavigationBar="False"
+            BackgroundColor="#121212">
+
+    <Grid RowDefinitions="60,*"
+      BackgroundColor="#1d1d1d">
+
+            <Label Text="EJERCICIO" Margin="80,0,80,0" HorizontalOptions="Center" VerticalOptions="Center" FontSize="28" FontAttributes="Bold" TextColor="#4D983C"/>
+            <CollectionView Background="#1d1d1d"
+                    x:Name="Listado"
+                        Grid.Row="1"
+                        ItemsSource="{Binding ListaEjercicio}"
+                        Margin="0,0,0,0">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="10" VerticalItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowDefinitions="100,*" Margin="10,10,0,0">
+
+                            <Frame Grid.Row="1" WidthRequest="250"
+                           HorizontalOptions="Center"
+                           CornerRadius="15"
+                           Margin="10,-68,10,0"
+                           HasShadow="False"
+                           BackgroundColor="#333333">
+
+                                <StackLayout Margin="0,10,0,0">
+                                <Label Text="Ejecicio de la semana" FontSize="18" TextColor="#fff"/>
+                                <Image Source="https://i.ibb.co/3YZGBVG/corriendo-1.png" WidthRequest="40" HorizontalOptions="End" VerticalOptions="Start"/>
+                            </StackLayout>
+                            </Frame>
+
+                            <Grid.GestureRecognizers>
+                                <!-- Se vincula el reconocimiento de gestos al comando de edición. -->
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.IraEditarcommand,Source={x:Reference Listado}}" CommandParameter="{Binding .}"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </DataTemplate> 
+                </CollectionView.ItemTemplate>
+                
+            </CollectionView>
+        <Label Text="{Binding MostrarComparado}" 
+       VerticalOptions="Center" 
+       HorizontalOptions="Center" 
+       FontSize="18" 
+       TextColor="White" />
+
+        <Button
+            Text="+"
+            HorizontalOptions="Center"
+            BackgroundColor="#4D983C"
+            BorderColor="Black"
+            BorderWidth="3"
+            CornerRadius="15"
+            FontSize="25"
+            WidthRequest="60"
+            HeightRequest="100"
+            TranslationX="150"
+            TranslationY="650"
+            Command="{Binding IraRegistrocommand}"/>
+
+
+    </Grid>
+</ContentPage>
